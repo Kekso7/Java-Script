@@ -1,0 +1,47 @@
+#allCars {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+#allCars div {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 300px;
+    position: relative;
+
+}
+
+#allCars p {
+    display: flex;
+    gap: 30px;
+    font-size: small;
+    color: #878787;
+}
+
+#allCars div img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    max-height: 200px;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+.productionYear {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: #a6f6fd;
+    color: #aaaaaa;
+    padding: 10px;
+    border-radius: 10px;
+}
