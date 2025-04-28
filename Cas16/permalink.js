@@ -1,12 +1,13 @@
+const apiURLBase = "https://dummyjson.com/recipes";
 
 let params = new URLSearchParams(window.location.search);
-
 let recipeId = params.get("id");
+
 let recipeElement = document.getElementById("recipe");
 let tagsHolder = document.getElementById('tagsHolder');
 
 
-fetch("https://dummyjson.com/recipes/"+recipeId)
+fetch(apiURLBase + "/" + recipeId)
     .then(response => response.json())
     .then(function(data) {
         let recipeName = document.createElement("h1");
@@ -15,7 +16,7 @@ fetch("https://dummyjson.com/recipes/"+recipeId)
 
 });
 
-fetch("https://dummyjson.com/recipes/tags")
+fetch(apiURLBase + "/tags")
     .then(response => response.json())
     .then(function(data) {
         for (let tag of data) {
@@ -29,6 +30,8 @@ fetch("https://dummyjson.com/recipes/tags")
 tagsHolder.addEventListener("change", function() {
     window.location.href = "index.html?category="+this.value;
 });
+
+
 
 
 
