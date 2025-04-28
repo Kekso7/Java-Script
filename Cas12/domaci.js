@@ -1,9 +1,6 @@
 
 function login(username,password) {
-        if(username.toLowerCase() === "admin" && password.toLowerCase() === "admin") {
-            return true;
-        }
-        return false;
+    return username.toLowerCase() === "admin" && password.toLowerCase() === "admin";
 }
 
 let result = login('aDmin','ADmin');
