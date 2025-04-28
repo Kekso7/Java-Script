@@ -1,4 +1,6 @@
 
+const apiURLBase = "https://dummyjson.com/recipes";
+
 let recipeHolder = document.getElementById('recipes');
 let tagsHolder = document.getElementById('tagsHolder');
 
@@ -6,7 +8,7 @@ let params = new URLSearchParams(window.location.search);
 let category = params.get("category");
 
 if(category === null) {
-    fetch("https://dummyjson.com/recipes?limit=9&sortBy=name&order=asc")
+    fetch(apiURLBase + "?limit=9&sortBy=name&order=asc")
         .then(response => response.json())
         .then(function(data) {
 
@@ -15,7 +17,7 @@ if(category === null) {
             }
         });
 } else {
-    let apiUrl = 'https://dummyjson.com/recipes/tag/'+category;
+    let apiUrl = apiURLBase + "/tag/" + category;
 
     fetch(apiUrl)
         .then(response => response.json())
@@ -27,7 +29,7 @@ if(category === null) {
         })
 }
 
-fetch("https://dummyjson.com/recipes/tags")
+fetch(apiURLBase + "/tags")
     .then(response => response.json())
     .then(function(data) {
         for (let tag of data) {
@@ -39,8 +41,7 @@ fetch("https://dummyjson.com/recipes/tags")
     })
 
     tagsHolder.addEventListener('change', function() {
-        let apiUrl = 'https://dummyjson.com/recipes/tag/'+this.value;
-
+        let apiUrl = (apiURLBase + "/tag/" + this.value);
         fetch(apiUrl)
             .then(response => response.json())
             .then(function(data) {
@@ -48,7 +49,7 @@ fetch("https://dummyjson.com/recipes/tags")
                 for(let recipe of data.recipes) {
                     appendCookingRecipe(recipe);
                 }
-        })
+        });
     });
 
 function appendCookingRecipe(recipe) {
@@ -77,6 +78,7 @@ function buildInstructionsElements(instructions) {
     }
     return recipeInstructions;
 }
+
 
 
 
